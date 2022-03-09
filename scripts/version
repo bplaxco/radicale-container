@@ -1,0 +1,3 @@
+#! /usr/bin/bash
+
+cat requirements.txt | grep radicale | sed 's/.*==//g'
