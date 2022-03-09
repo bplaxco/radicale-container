@@ -11,3 +11,7 @@ run:
 .PHONY: debug
 debug:
 	@./scripts/$@
+
+.PHONY: publish
+publish:
+	@./scripts/$@

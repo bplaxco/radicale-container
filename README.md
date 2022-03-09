@@ -19,6 +19,12 @@ Mount a `users` httpasswd file using bcrypt at
 If one isn't mounted in, one with a user `user:password` will be generated.
 Make sure to mount one there! Don't use the defaults in production.
 
+## Published Image
+
+I have a version published at `quay.io/lupnix/radicale` but I recommend you
+build your own image. My image is for personal use and could be removed
+at any point.
+
 ## Make Targets
 
 ### `build`
