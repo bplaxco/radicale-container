@@ -38,3 +38,11 @@ Run the image locally.
 ### `debug`
 
 Run the image locally, using bash as the entrypoint.
+
+### `publish`
+
+Publish the image to `quay.io/lupnix/radicale`
+
+### `security-report`
+
+Check the deps for vulnerabilities

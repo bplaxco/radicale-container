@@ -15,3 +15,7 @@ debug:
 .PHONY: publish
 publish:
 	@./scripts/$@
+
+.PHONY: security-report
+security-report:
+	@./scripts/$@
