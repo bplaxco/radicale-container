@@ -1,0 +1,5 @@
+#! /usr/bin/bash
+
+podman run -it --rm -p 5232:5232 \
+  --entrypoint /usr/bin/bash \
+  quay.io/bplaxco/radicale:latest

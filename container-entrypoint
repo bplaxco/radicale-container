@@ -1,0 +1,32 @@
+#! /usr/bin/bash
+
+set -xeuo pipefail
+
+WORKERS=${WORKERS:-3}
+ACCESS_LOG=${ACCESS_LOG:--}
+ERROR_LOG=${ERROR_LOG:--}
+SSL_KEY=${APP_ROOT}/etc/radicale/tls/tls.key
+SSL_CERT=${APP_ROOT}/etc/radicale/tls/tls.crt
+USERS_FILE=$(cat ${RADICALE_CONFIG} | grep htpasswd_filename | awk '{print $3}')
+
+if [ ! -f "${SSL_KEY}" ] && [ ! -f "${SSL_CERT}" ]
+then
+  openssl req \
+    -newkey rsa:4096 -x509 -nodes -subj '/CN=localhost' \
+    -keyout ${SSL_KEY} -days 3650 -out ${SSL_CERT}
+fi
+
+if [ ! -f "${USERS_FILE}" ]
+then
+  # Setting up default user. Don't use this in production!
+  htpasswd -cbB ${USERS_FILE} user password
+fi
+
+# Set the env variable for the app's config file
+exec gunicorn 'radicale' \
+    --bind '0.0.0.0:5232' \
+    --keyfile "${SSL_KEY}" \
+    --certfile "${SSL_CERT}" \
+    --workers ${WORKERS} \
+    --access-logfile "${ACCESS_LOG}" \
+    --error-logfile "${ERROR_LOG}"

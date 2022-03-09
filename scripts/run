@@ -1,0 +1,4 @@
+#! /usr/bin/bash
+
+podman run -it --rm -p 5232:5232 \
+  quay.io/bplaxco/radicale:latest

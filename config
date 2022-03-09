@@ -1,0 +1,30 @@
+[server]
+hosts = 0.0.0.0:5232, [::]:5232
+max_connections = 20
+max_content_length = 100000000
+timeout = 30
+
+[encoding]
+request = utf-8
+stock = utf-8
+
+[auth]
+type = htpasswd
+htpasswd_filename = /opt/app-root/var/radicale/users
+htpasswd_encryption = bcrypt
+delay = 1
+
+[rights]
+type = owner_only
+
+[storage]
+type = multifilesystem
+filesystem_folder = /opt/app-root/var/radicale/collections
+max_sync_token_age = 2592000
+
+[web]
+type = internal
+
+[logging]
+level = info
+mask_passwords = True
