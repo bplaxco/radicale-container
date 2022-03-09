@@ -7,6 +7,7 @@ COPY container-entrypoint ${APP_ROOT}/bin/container-entrypoint
 ENV RADICALE_CONFIG ${APP_ROOT}/etc/radicale/config
 
 RUN \
+  python3 -m pip install --upgrade pip && \
   mkdir -p $(cat ${RADICALE_CONFIG} | grep filesystem_folder | awk '{print $3}') && \
   python3 -m pip install -r ${APP_ROOT}/etc/radicale/requirements.txt
 

@@ -1,13 +1,5 @@
 #! /usr/bin/bash
 
-VENV_DIR="/tmp/venv"
-
-rm -rf ${VENV_DIR}
-python -m venv ${VENV_DIR}
-
-source ${VENV_DIR}/bin/activate
-python3 -m pip install safety
-python3 -m pip install -r ./requirements.txt
-safety check
-
-rm -rf ${VENV_DIR}
+podman run -it --rm \
+  --entrypoint /usr/bin/bash quay.io/lupnix/radicale:$(./scripts/version) \
+  -c 'python3 -m pip install safety && safety check --full-report'
