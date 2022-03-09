@@ -14,12 +14,17 @@ then
   openssl req \
     -newkey rsa:4096 -x509 -nodes -subj '/CN=localhost' \
     -keyout ${SSL_KEY} -days 3650 -out ${SSL_CERT}
+
+  chmod 440 ${SSL_KEY}
+  chmod 440 ${SSL_CERT}
 fi
 
 if [ ! -f "${USERS_FILE}" ]
 then
   # Setting up default user. Don't use this in production!
   htpasswd -cbB ${USERS_FILE} user password
+
+  chmod 440 ${USERS_FILE}
 fi
 
 # Set the env variable for the app's config file
