@@ -10,7 +10,7 @@ stock = utf-8
 
 [auth]
 type = htpasswd
-htpasswd_filename = /opt/app-root/var/radicale/users
+htpasswd_filename = /opt/app-root/etc/radicale/users
 htpasswd_encryption = bcrypt
 delay = 1
 

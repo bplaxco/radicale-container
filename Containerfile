@@ -15,7 +15,7 @@ USER 0
 
 RUN \
   mkdir -p ${APP_ROOT}/etc/radicale/tls && \
-  chown default:root ${APP_ROOT}/etc/radicale/tls && \
+  chown -R default:root ${APP_ROOT}/etc/radicale && \
   chmod 770 ${APP_ROOT}/etc/radicale/tls
 
 USER 1001
