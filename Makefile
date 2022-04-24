@@ -1,8 +1,17 @@
 all: build
 
+.PHONY: clean
+clean:
+	@./scripts/$@
+
 .PHONY: build
 build:
 	@./scripts/$@
+
+.PHONY: sign
+sign:
+	@./scripts/$@
+
 
 .PHONY: run
 run:

@@ -1,0 +1,9 @@
+#! /usr/bin/bash
+set -ex
+
+mkdir -p sigstore
+
+podman image sign \
+  --sign-by=${GPG_EMAIL} \
+  --directory=./sigstore \
+  docker://quay.io/lupnix/radicale:$(./scripts/version)
