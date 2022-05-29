@@ -1,4 +1,4 @@
-FROM registry.redhat.io/ubi8/python-39@sha256:55eff45f02c524029020df01ff4c9f53e08ea67944b83ad24cc0d02ff79efd82
+FROM registry.redhat.io/ubi9/python-39@sha256:9e2fb903e0919b50e0547f407f8c657f3ec4515653dfef5c92442cc3e063e6f8
 
 COPY requirements.txt ${APP_ROOT}/etc/radicale/requirements.txt
 COPY config ${APP_ROOT}/etc/radicale/config
