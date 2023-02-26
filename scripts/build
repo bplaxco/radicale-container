@@ -1,3 +1,4 @@
 #! /usr/bin/bash
 
+podman pull registry.redhat.io/ubi9/python-39:latest
 podman build --no-cache --tag quay.io/lupnix/radicale:$(./scripts/version) .
